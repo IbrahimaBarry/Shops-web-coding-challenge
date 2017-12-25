@@ -13,5 +13,7 @@
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'ShopController@index');
+Route::get('/home', 'ShopController@index')->name('home');
+
+Route::post('/shopLiked/store', 'ShopLikedController@store');

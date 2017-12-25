@@ -4,8 +4,9 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Moloquent
 
-class User extends Authenticatable
+class User extends Moloquent implements Authenticatable
 {
     use Notifiable;
 
@@ -26,4 +27,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function shopsLiked() {
+        return $this->belongsToMany(Shop::class, 'shop_liked');
+    }
 }

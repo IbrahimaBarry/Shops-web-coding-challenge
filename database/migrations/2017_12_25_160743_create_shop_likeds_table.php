@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Jenssegers\Mongodb\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateShopLikedsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $collection) {
-            $collection->index('name');
-            $collection->unique('email');
-            $collection->index('password');
-            $collection->rememberToken();
+        Schema::create('shop_likeds', function (Blueprint $collection) {
+            $collection->index('shop_id');
+            $collection->index('user_id');
             $collection->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('users');
+        Schema::drop('shop_likeds');
     }
 }

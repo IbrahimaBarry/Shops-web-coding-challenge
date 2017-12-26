@@ -16,7 +16,7 @@
                         </div>
                         
                         <div class="card-action">
-                            <a href="#" class="btn btn-danger" @click.prevent="remove(shop)">Remove</a>
+                            <a href="#" class="btn btn-danger" @click.prevent="remove(shop._id)">Remove</a>
                         </div>
                     </div>
                     <!--/.Card-->
@@ -37,7 +37,9 @@
           }
         },
         methods: {
-          remove (value) {
+          remove (id) {
+            axios.delete('/shop/removeLike/' + id)
+              .then(response => this.shops = this.shops.filter(shop => shop._id !== id))
           }
         }
     }

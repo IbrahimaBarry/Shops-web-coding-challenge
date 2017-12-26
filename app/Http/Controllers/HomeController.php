@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $shops = Shop::all();
+        $shops = Shop::latest()->get();
 
         return view('home', compact('shops'));
     }

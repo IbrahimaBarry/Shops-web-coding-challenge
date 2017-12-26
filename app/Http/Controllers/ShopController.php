@@ -16,4 +16,9 @@ class ShopController extends Controller
     	$shop = Shop::find(strval($id));
         Auth::user()->shops()->save($shop);
     }
+
+    public function removeLike($id) {
+    	$shop = Shop::find(strval($id));
+    	Auth::user()->shops()->detach($shop);
+    }
 }

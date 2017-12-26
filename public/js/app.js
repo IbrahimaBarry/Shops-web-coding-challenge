@@ -43594,7 +43594,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   methods: {
-    remove: function remove(value) {}
+    remove: function remove(id) {
+      var _this = this;
+
+      axios.delete('/shop/removeLike/' + id).then(function (response) {
+        return _this.shops = _this.shops.filter(function (shop) {
+          return shop._id !== id;
+        });
+      });
+    }
   }
 });
 
@@ -43640,7 +43648,7 @@ var render = function() {
                     on: {
                       click: function($event) {
                         $event.preventDefault()
-                        _vm.remove(shop)
+                        _vm.remove(shop._id)
                       }
                     }
                   },

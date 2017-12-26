@@ -16,8 +16,7 @@
                         </div>
                         
                         <div class="card-action">
-                            <a href="#" class="btn btn-danger" @click.prevent="dislike(shop._id)">Dislike</a>
-                            <a href="#" class="btn btn-success" @click.prevent="like(shop._id)">Like</a>
+                            <a href="#" class="btn btn-danger" @click.prevent="remove(shop)">Remove</a>
                         </div>
                     </div>
                     <!--/.Card-->
@@ -38,13 +37,9 @@
           }
         },
         methods: {
-            like (id) {
-                axios.get('/shop/like/' + id)
-                  .then(response => this.shops = this.shops.filter(shop => shop._id !== id))
-            },
-            dislike (id) {
-                this.shops = this.shops.filter(shop => shop._id !== id)
-            }
+          remove (value) {
+            
+          }
         }
     }
 </script>

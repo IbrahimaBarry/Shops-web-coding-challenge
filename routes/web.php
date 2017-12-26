@@ -13,7 +13,8 @@
 
 Auth::routes();
 
-Route::get('/', 'ShopController@index');
-Route::get('/home', 'ShopController@index')->name('home');
+Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/myPreferredShops', 'HomeController@myPreferredShops')->name('myPreferredShops');
 
 Route::get('/shop/like/{id}', 'ShopController@like');

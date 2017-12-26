@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\Shop;
 
 class HomeController extends Controller
 {
@@ -24,8 +25,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $shops = Shop::all();
+
+        return view('home', compact('shops'));
     }
 
-    
+    /**
+     * Show the user preferred shop's.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function myPreferredShops() {
+        $shops = Auth::user()->shops;
+
+        return view('myPreferredShops', compact('shops'));
+    }
 }

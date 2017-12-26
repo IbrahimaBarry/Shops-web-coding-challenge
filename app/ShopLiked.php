@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Moloquent;
 
-class ShopLiked extends Model
+class ShopLiked extends Moloquent
 {
     protected $fillable = [
     	'shop_id', 'user_id'

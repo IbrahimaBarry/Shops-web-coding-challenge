@@ -16,8 +16,8 @@
                         </div>
                         
                         <div class="card-action">
-                            <a href="#" class="btn btn-danger" @click.prevent="dislike(shop)">Dislike</a>
-                            <a href="#" class="btn btn-success" @click.prevent="like(shop)">Like</a>
+                            <a href="#" class="btn btn-danger" @click.prevent="dislike(shop._id)">Dislike</a>
+                            <a href="#" class="btn btn-success" @click.prevent="like(shop._id)">Like</a>
                         </div>
                     </div>
                     <!--/.Card-->
@@ -30,11 +30,17 @@
 <script>
     export default {
         props: {
-            shops: {type: Array, default: null}
+            data: {type: Array, default: null}
+        },
+        computed: {
+          shops () {
+            return this.data
+          }
         },
         methods: {
-            like (value) {
-                this.shops = this.shops.filter(shop => shop !== value)
+            like (id) {
+                axios.get('/shop/like/' + id)
+                  .then(response => console.log('liked'))
             },
             dislike (value) {
                 this.shops = this.shops.filter(shop => shop !== value)

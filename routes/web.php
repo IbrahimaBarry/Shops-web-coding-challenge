@@ -16,4 +16,4 @@ Auth::routes();
 Route::get('/', 'ShopController@index');
 Route::get('/home', 'ShopController@index')->name('home');
 
-Route::post('/shopLiked/store', 'ShopLikedController@store');
+Route::get('/shop/like/{id}', 'ShopController@like');

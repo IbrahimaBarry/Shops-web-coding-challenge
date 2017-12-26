@@ -31,7 +31,7 @@ class User extends Moloquent implements AuthenticatableContract, AuthorizableCon
         'password', 'remember_token',
     ];
 
-    public function shopsLiked() {
-        return $this->belongsToMany(Shop::class, 'shop_liked');
+    public function shops() {
+        return $this->belongsToMany(Shop::class, 'null', 'user_id', 'shop_id');
     }
 }

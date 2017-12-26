@@ -26,7 +26,12 @@ class HomeController extends Controller
     public function index()
     {
         $shopIds = Auth::user()->shops()->pluck('_id')->toArray();
-        $shops = Shop::whereNotIn('_id', $shopIds)->orderBy('location.coordinates', 'desc')->get();
+
+        if (session()->has(strval(Auth::user()->id)))
+            $shops = Shop::whereNotIn('_id', $shopIds)->whereNotIn('_id', session(strval(Auth::user()->id)))
+                ->orderBy('location.coordinates', 'desc')->get();
+        else
+            $shops = Shop::whereNotIn('_id', $shopIds)->orderBy('location.coordinates', 'desc')->get();
 
         return view('home', compact('shops'));
     }

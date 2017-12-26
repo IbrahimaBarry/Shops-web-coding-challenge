@@ -19,3 +19,4 @@ Route::get('/myPreferredShops', 'HomeController@myPreferredShops')->name('myPref
 
 Route::get('/shop/like/{id}', 'ShopController@like');
 Route::delete('/shop/removeLike/{id}', 'ShopController@removeLike');
+Route::get('/shop/dislike/{id}', 'ShopController@dislike');

@@ -43349,31 +43349,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        data: { type: Array, default: null }
-    },
-    data: function data() {
-        return {
-            shops: this.data
-        };
-    },
+  props: {
+    data: { type: Array, default: null }
+  },
+  data: function data() {
+    return {
+      shops: this.data
+    };
+  },
 
-    methods: {
-        like: function like(id) {
-            var _this = this;
+  methods: {
+    like: function like(id) {
+      var _this = this;
 
-            axios.get('/shop/like/' + id).then(function (response) {
-                return _this.shops = _this.shops.filter(function (shop) {
-                    return shop._id !== id;
-                });
-            });
-        },
-        dislike: function dislike(id) {
-            this.shops = this.shops.filter(function (shop) {
-                return shop._id !== id;
-            });
-        }
+      axios.get('/shop/like/' + id).then(function (response) {
+        return _this.shops = _this.shops.filter(function (shop) {
+          return shop._id !== id;
+        });
+      });
+    },
+    dislike: function dislike(id) {
+      var _this2 = this;
+
+      axios.get('/shop/dislike/' + id).then(function (response) {
+        return _this2.shops = _this2.shops.filter(function (shop) {
+          return shop._id !== id;
+        });
+      });
     }
+  }
 });
 
 /***/ }),

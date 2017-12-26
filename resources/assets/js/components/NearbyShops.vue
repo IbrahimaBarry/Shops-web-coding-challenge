@@ -43,7 +43,7 @@
                   .then(response => this.shops = this.shops.filter(shop => shop._id !== id))
             },
             dislike (id) {
-                this.shops = this.shops.filter(shop => shop._id !== id)
+              axios.get('/shop/dislike/' + id).then(response => this.shops = this.shops.filter(shop => shop._id !== id))
             }
         }
     }

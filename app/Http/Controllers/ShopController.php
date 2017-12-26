@@ -21,4 +21,8 @@ class ShopController extends Controller
     	$shop = Shop::find(strval($id));
     	Auth::user()->shops()->detach($shop);
     }
+
+    public function dislike($id) {
+        session()->push(strval(Auth::user()->id), $id);
+    }
 }
